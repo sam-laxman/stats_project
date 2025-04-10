@@ -282,7 +282,6 @@ def dataviewer():
 
 if st.session_state["current_screen"] == 0:
     enter_screen()
-    st.rerun()
 if st.session_state["current_screen"] == 1:
     passage_one(st.session_state["passage_key"])
 if st.session_state["current_screen"] == 2:

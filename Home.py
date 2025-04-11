@@ -62,7 +62,7 @@ def enter_screen():
         email = st.text_input("Please enter your school email: ")
         submitted = st.form_submit_button("Start")
         if submitted: #decide the font and the passage that the user sees first!
-            if email == password:
+            if email == "open sesame!":
                 st.session_state["current_screen"] = 7
                 st.rerun()
             else:

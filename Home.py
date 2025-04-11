@@ -59,38 +59,42 @@ def enter_screen():
     st.write("Welcome to our AP Stats project and thanks for doing this! You'll read two different passages, with 1 minute to read each, and then you'll answer 5 multiple-choice questions about each passage. Between the passages, you'll have a 15-second break, which you can skip if you choose. You'll be able to see your scores at the end! To get started, please fill in your email in the form below and hit the start button.")
     
     with st.form("Email"):
-        st.session_state['log']['email'] = st.text_input("Please enter your school email: ")
+        email = st.text_input("Please enter your school email: ")
         submitted = st.form_submit_button("Start")
         if submitted: #decide the font and the passage that the user sees first!
-            rand_int = random.randint(1, 4)
-            if rand_int == 1:
-                st.session_state["current_screen"] = 1
-                st.session_state['log']['first_passage'] = 1
-                st.session_state["passage_key"] = 0
-                st.session_state['log']['passage_1_version'] = 0
-                st.rerun()
-            elif rand_int == 2:
-                st.session_state["current_screen"] = 1
-                st.session_state['log']['first_passage'] = 1
-                st.session_state["passage_key"] = 1
-                st.session_state['log']['passage_1_version'] = 1
-                st.rerun()
-            elif rand_int == 3:
-                st.session_state["current_screen"] = 4
-                st.session_state['log']['first_passage'] = 2
-                st.session_state["passage_key"] = 0   
-                st.session_state['log']['passage_1_version'] = 1  
-                st.rerun()
-            elif rand_int == 4:
-                st.session_state["current_screen"] = 4
-                st.session_state['log']['first_passage'] = 2
-                st.session_state["passage_key"] = 1
-                st.session_state['log']['passage_1_version'] = 0
+            if email == password:
+                st.session_state["current_screen"] = 7
                 st.rerun()
             else:
-                raise ValueError("Random integer out of range!") 
-            
-            return
+                st.session_state['log']['email']
+                rand_int = random.randint(1, 4)
+                if rand_int == 1:
+                    st.session_state["current_screen"] = 1
+                    st.session_state['log']['first_passage'] = 1
+                    st.session_state["passage_key"] = 0
+                    st.session_state['log']['passage_1_version'] = 0
+                    st.rerun()
+                elif rand_int == 2:
+                    st.session_state["current_screen"] = 1
+                    st.session_state['log']['first_passage'] = 1
+                    st.session_state["passage_key"] = 1
+                    st.session_state['log']['passage_1_version'] = 1
+                    st.rerun()
+                elif rand_int == 3:
+                    st.session_state["current_screen"] = 4
+                    st.session_state['log']['first_passage'] = 2
+                    st.session_state["passage_key"] = 0   
+                    st.session_state['log']['passage_1_version'] = 1  
+                    st.rerun()
+                elif rand_int == 4:
+                    st.session_state["current_screen"] = 4
+                    st.session_state['log']['first_passage'] = 2
+                    st.session_state["passage_key"] = 1
+                    st.session_state['log']['passage_1_version'] = 0
+                    st.rerun()
+                else:
+                    raise ValueError("Random integer out of range!")
+                return
             
     if st.session_state["current_screen"] == 0 and not(submitted):
         with st.form("Authentication"):

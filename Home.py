@@ -95,21 +95,6 @@ def enter_screen():
                 else:
                     raise ValueError("Random integer out of range!")
                 return
-            
-    if st.session_state["current_screen"] == 0 and not(submitted):
-        with st.form("Authentication"):
-            st.write("Please DO NOT enter a password unless you're part of the group running this experiment. The password lets you view the collected data.")
-            password = st.text_input("Enter the password: ")
-            data_view = st.form_submit_button("See Data")  
-            if data_view:
-                if password == "open sesame!":
-                    st.session_state['current_screen'] = 7 
-                    st.rerun()
-                else:
-                    st.error("Please enter the correct password.")
-                    data_view = False
-                    st.rerun()
-        return
 
 def passage_one(passage_key): #the times new roman passage
     st.empty()

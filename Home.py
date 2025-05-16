@@ -115,7 +115,7 @@ def enter_screen():
                 st.session_state["current_screen"] = 7
                 st.rerun()
             else:
-                st.session_state['log']['email']
+                st.session_state['log']['email'] = email
                 rand_int = random.randint(1, 4)
                 if rand_int == 1:
                     st.session_state["current_screen"] = 1

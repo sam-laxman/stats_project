@@ -1,9 +1,3 @@
-import streamlit as st
-import os
-import random
-import time
-import pandas as pd
-import csv
 
 st.markdown("""
 <style>
@@ -50,9 +44,59 @@ if 'log' not in st.session_state:
     st.session_state['log'] = {'email': "", 'first_passage': -1, 'font_for_passage_2': -1, 'passage_1_version': -1, 'passage_1_score': -1, 'passage_2_score': -1}
 
 if 'titles' not in st.session_state:
-    st.session_state['titles'] = ["Polar Bears", "Volcanoes"]
-    st.session_state['passages'] = ["Polar bears are uniquely adapted to survive in the harsh Arctic environment. Their thick fur provides insulation against extreme cold, while their black skin absorbs heat from the sun. Beneath their fur, a layer of fat helps retain body warmth. Their large, powerful paws allow them to swim long distances and walk on ice without slipping. Despite these adaptations, climate change has significantly affected their habitat. Melting sea ice reduces their ability to hunt seals, their primary food source, leading to declining populations in some regions.", "Volcanoes are powerful geological formations that release molten rock, ash, and gases from beneath the Earth’s surface. They form when pressure builds up in the mantle, forcing magma upward through cracks in the crust. Some volcanoes erupt explosively, sending ash high into the atmosphere, while others release slow-moving lava flows. Volcanic eruptions can cause significant environmental changes, including air pollution, climate shifts, and land formation. While dangerous, volcanoes also create fertile soil that supports agriculture in many regions around the world."]
-    st.session_state['mcqs'] = [[["What is the primary function of a polar bear’s thick fur?",{1: "To help them swim faster", 2: "To insulate them from the cold", 3: "To make them appear larger to predators", 4: "To keep their skin dry", "A": 2}], ["Why do polar bears have black skin?", {1: "It helps them stay camouflaged", 2: "It absorbs heat from the sun", 3: "It protects them from predators", 4: "It helps them swim better", "A": 2}], ["How has climate change impacted polar bears?", {1: "It has helped them find more food", 2: "It has made them migrate to warmer areas", 3: "It has reduced their ability to hunt", 4: "It has increased their population", "A": 3}], ["What do polar bears primarily eat?", {1: "Fish", 2: "Penguins", 3: "Whales", 4: "Seals", "A": 4}], ["What is one advantage of polar bears’ large paws?", {1: "They allow them to move quickly on ice", 2: "They help them climb trees", 3: "They keep their fur dry", 4: "They store extra fat", "A": 1}]], [["What is one cause of a volcanic eruption?", {1: "Magma rising due to pressure", 2: "Ocean currents shifting", 3: "Lightning strikes in the atmosphere", 4: "Sudden changes in temperature", "A": 1}], ["How do explosive eruptions differ from slow-moving lava flows?", {1: "They release less ash", 2: "They send ash high into the atmosphere", 3: "They do not affect the environment", 4: "They happen only in the ocean", "A": 2}], ["What is a positive effect of volcanic activity?", {1: "It creates fertile soil", 2: "It removes toxic gases from the air", 3: "It prevents earthquakes", 4: "It stops forest fires", "A": 1}], ["What is magma?", {1: "Hardened lava on the surface", 2: "A type of volcanic gas", 3: "Molten rock beneath the Earth’s surface", 4: "The outer layer of a volcano", "A": 3}], ["What is one environmental impact of volcanic eruptions?", {1: "They lower sea levels", 2: "They create strong hurricanes", 3: "They can cause climate shifts", 4: "They increase oxygen levels in the air", "A": 3}]]]
+    # Updated passage titles
+    st.session_state['titles'] = ["The Transport Cavern", "The Whispering Grove"]
+    # Updated passages
+    st.session_state['passages'] = [
+        "In a land unlike any other, deep beneath the Crystalline Expanse, lies the Transport Cavern—a place where energy currents spiral through the air and stone seems to breathe. Within this vast, glittering chamber, a complex system of moving platforms, each glowing a soft amber, allows inhabitants to journey from one quadrant to another.\n\n"
+        "The system is powered by fluxstones, which pulse with a rhythm that seems almost alive. These stones, embedded into the walls, emit waves of kinetic charge that propel the platforms without any need for visible machinery. As the charge builds, platforms glide smoothly along translucent rails, changing direction only when signaled by a flicker of blue light from the stones.\n\n"
+        "Each platform can hold up to four passengers, but only when their combined weight aligns with the harmonics of the current. If the balance is off, the platform hums a warning tone and remains still until the correct distribution is restored. Despite the potential for confusion, the system is rarely delayed.\n\n"
+        "Navigation is guided by driftsigns—floating panels that pulse in rhythm with the passenger’s destination thoughts. While the precise mechanism of this interaction remains unknown, the system has proven uncannily accurate, transporting travelers to even the most remote chambers.\n\n"
+        "Residents have used the cavern system for centuries, adapting their daily routines to its quirks. While first-time travelers often report disorientation due to the ever-shifting patterns of the rails, most quickly become attuned to the fluid logic of the cavern. Even so, Transport Guardians remain on standby at major nodes, ready to assist if a platform misroutes or a fluxstone flickers out.",
+        "At the center of the floating isle of Tura lies the Whispering Grove, a dense forest of featherleaf trees that communicate not with sound, but through patterns of light. Each tree possesses a crown of translucent leaves that shimmer in subtle hues—blues, greens, and violets—depending on stimuli sensed in the air.\n\n"
+        "Observers note that when a creature walks through the grove, the trees closest to it will glow briefly in a ripple, signaling its movement to the others. Over time, researchers mapped these reactions and discovered distinct patterns associated with different kinds of movement, atmospheric pressure shifts, and even emotional states.\n\n"
+        "Communication among the trees appears to be decentralized, with no single tree acting as a hub. Instead, the grove functions as a responsive network where input in one area can trigger visual echoes miles away. The color responses, while beautiful, are not random. A sudden gust of wind causes a pale green cascade, while a sharp cry elicits spirals of violet and blue.\n\n"
+        "Locals living near the grove use its reactions as a form of forecasting. If the trees shimmer red-orange before dawn, it is often taken as a sign of coming storms. While scientific consensus is still forming, the correlation between tree behavior and environmental changes is strong enough to influence daily decisions.\n\n"
+        "Despite its sensitivity, the grove is resilient. When a large stone fell into the western edge last season, the trees dimmed for only a moment before resuming their typical patterns. Restoration did not come from external help but from the surrounding trees recalibrating their glow, effectively “healing” the light network from within.\n\n"
+        "The Whispering Grove remains an enigma. It is neither fully understood nor easily explained, but those who spend time within it often leave with a sense of being gently observed by the forest itself."
+    ]
+    # Updated MCQs
+    st.session_state['mcqs'] = [
+        [  # The Transport Cavern questions
+            ["What powers the movement of the platforms in the Transport Cavern?",
+                {1: "Steam engines", 2: "Magnetic rails", 3: "Driftsigns", 4: "Fluxstones", "A": 4}
+            ],
+            ["How is direction determined for each platform?",
+                {1: "A lever attached to the rails", 2: "The thoughts of the passenger", 3: "Voice commands", 4: "Fixed route schedules", "A": 2}
+            ],
+            ["What happens if the passengers’ weight does not match the harmonic threshold?",
+                {1: "A warning tone sounds and the platform does not move", 2: "The platform ejects passengers", 3: "The platform begins to shake violently", 4: "The platform moves slowly", "A": 1}
+            ],
+            ["Why are Transport Guardians stationed at major nodes?",
+                {1: "To repair broken platforms", 2: "To direct traffic and stop theft", 3: "To assist travelers and fix misroutes", 4: "To collect passage fees", "A": 3}
+            ],
+            ["What challenge do new users of the Transport Cavern typically experience?",
+                {1: "Overcrowding", 2: "Language barriers", 3: "Lack of signage", 4: "Disorientation from shifting rails", "A": 4}
+            ]
+        ],
+        [  # The Whispering Grove questions
+            ["How do the featherleaf trees communicate?",
+                {1: "Through musical notes", 2: "Through colored light patterns", 3: "By releasing spores", 4: "Using underground roots", "A": 2}
+            ],
+            ["What happens when a creature walks through the Whispering Grove?",
+                {1: "The trees grow taller", 2: "The trees emit a humming sound", 3: "Nearby trees shimmer to signal its presence", 4: "The ground pulses with energy", "A": 3}
+            ],
+            ["What was concluded from mapping tree reactions?",
+                {1: "Different stimuli trigger specific light patterns", 2: "Only one tree controls the whole grove", 3: "Trees react randomly to light", 4: "Trees only react to human presence", "A": 1}
+            ],
+            ["What do locals believe a red-orange glow before dawn means?",
+                {1: "The trees are angry", 2: "A traveler is near", 3: "Nightfall will be delayed", 4: "A storm is coming", "A": 4}
+            ],
+            ["How did the grove respond after a stone damaged its western edge?",
+                {1: "The grove restored itself through recalibration", 2: "The affected trees died", 3: "The trees went dark for weeks", 4: "People had to replant the trees", "A": 1}
+            ]
+        ]
+    ]
 
 def enter_screen():
     st.title("Reading Comprehension Test | AP Statistics Project")

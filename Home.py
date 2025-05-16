@@ -105,7 +105,7 @@ if 'titles' not in st.session_state:
 
 def enter_screen():
     st.title("Reading Comprehension Test | AP Statistics Project")
-    st.write("Welcome to our AP Stats project and thanks for doing this! You'll read two different passages, with 1 minute to read each, and then you'll answer 5 multiple-choice questions about each passage. Between the passages, you'll have a 15-second break, which you can skip if you choose. You'll be able to see your scores at the end! To get started, please fill in your email in the form below and hit the start button.")
+    st.write("Welcome to our AP Stats project and thanks for doing this! You'll read two different passages, with 1 minute to read each, and then you'll answer 5 multiple-choice questions about each passage. Between the passages, you'll have a 15-second break, which you can skip if you choose. To get started, please fill in your email in the form below and hit the start button.")
     
     with st.form("Email"):
         email = st.text_input("Please enter your school email: ")

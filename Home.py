@@ -153,7 +153,7 @@ def passage_one(passage_key): #the times new roman passage
 
     st.markdown(f'<div class="font-noto">{st.session_state['passages'][st.session_state["passage_key"]]}</div>', unsafe_allow_html=True)
 
-    for remaining in range(60, -1, -1):
+    for remaining in range(10, -1, -1):
         timer_placeholder.markdown(f"**Time remaining:** {remaining} seconds")
         time.sleep(1)
 
@@ -208,7 +208,7 @@ def passage_two(passage_key): #random choice font
 
     st.markdown(f'<div class={font_of_choice}>{st.session_state['passages'][st.session_state["passage_key"]]}</div>', unsafe_allow_html=True)
 
-    for remaining in range(60, -1, -1):
+    for remaining in range(10, -1, -1):
         timer_placeholder.markdown(f"**Time remaining:** {remaining} seconds")
         time.sleep(1)
 
